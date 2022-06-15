@@ -1,0 +1,107 @@
+*{
+    box-sizing: border-box;
+
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+th:nth-child(2) ,td:nth-child(2){
+    background-color: #FF8080;
+}
+th:nth-child(3) ,td:nth-child(3){
+    background-color: #C0EDA6;
+}
+
+body{
+    background-color: #E5E5E5;
+}
+
+label{
+    background-color: none;
+}
+
+td, th{
+    max-width: 40vw;
+    padding: 1rem;
+    border: 1px solid #000;
+}
+
+table{
+    margin-bottom: 5vh;
+}
+
+.sectionHeading{
+    font-size: 2rem;
+    margin-bottom: 5vh;
+}
+
+.tableNumber{
+    margin-top: 10vh;
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+.formLabel{
+    margin-top: 10vh;
+    display: block;
+    /* color: #5463FF; */
+    font-weight: bold;
+    background-color: none;
+}
+
+.formInput{
+    border: none;
+    background-color: #5463FF1a;
+    width: 80vw;
+    height: 5vh;
+    /* margin-bottom: 10vh; */
+}
+
+.dependentForm{
+    transition: 1s;
+}
+
+.navbar{
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    padding: 0 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 5px solid #5463FF;
+    background-color: #E5E5E5;
+}
+
+.navHeading{
+    font-size: 2rem;
+}
+
+.main{
+    margin: 20vh 10vw;
+}
+
+.navImg{
+    height: 8vh;
+}
+
+.submitButton{
+    border: 2px solid #5463FF;
+    background-color: #5463FF;
+    padding: 1%;
+    color: #E5E5E5;
+    cursor: pointer;
+    margin-top: 5vh;
+}
+
+.submitButton:hover{
+    border: 2px solid #5463FF;
+    background-color: #E5E5E5;
+    color: #5463FF;
+}
+
+.submitButton:active{
+    font-weight: bold;
+}
