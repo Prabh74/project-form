@@ -22,11 +22,10 @@ export default function Section3(props) {
 		let time2 = d2.toLocaleTimeString()
 		setData(prevValue => {return {...prevValue, endTime: time2}})
 	}
-
+	
 	if(data3.endTime){
 		props.call(data3)
 	}
-
 	function handleChange(e) {
 		var currName = e.target.name;
 		var currValue = e.target.value;

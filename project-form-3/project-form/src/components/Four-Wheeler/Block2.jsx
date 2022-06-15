@@ -30,37 +30,43 @@ export default function Block2W4(props) {
 			time: Math.round(
 				((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 					(0.4 * Number(props.tripLength) - 1) +
-					12 + 1.08*Number(props.tripLength)
+					12 +
+					1.08 * Number(props.tripLength)
 			),
-			cost:
-				Math.round(0.4 * Number(props.tripLength) * 7.5 +
-				0.6 * Number(props.tripLength) * 2.3),
+			cost: Math.round(
+				0.4 * Number(props.tripLength) * 7.5 +
+					0.6 * Number(props.tripLength) * 2.3
+			),
 		},
 
 		level2: {
-			time:
-				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
-						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
-						12)
-				 * 1.05),
-			cost:
-				Math.round((0.4 * Number(props.tripLength) * 7.5 +
+			time: Math.round(
+				(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(0.4 * Number(props.tripLength) - 1) +
+					1.08 * Number(props.tripLength) +
+					12) *
+					1.05
+			),
+			cost: Math.round(
+				(0.4 * Number(props.tripLength) * 7.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
-				1.05),
+					1.05
+			),
 		},
 
 		level3: {
-			time:
-				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
-						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
-						12)
-				 * 1.1),
-			cost:
-				Math.round((0.4 * Number(props.tripLength) * 7.5 +
+			time: Math.round(
+				(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(0.4 * Number(props.tripLength) - 1) +
+					1.08 * Number(props.tripLength) +
+					12) *
+					1.1
+			),
+			cost: Math.round(
+				(0.4 * Number(props.tripLength) * 7.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
-				1.1),
+					1.1
+			),
 		},
 	});
 
@@ -68,7 +74,7 @@ export default function Block2W4(props) {
 		var currName = e.target.name;
 		var currValue = e.target.value;
 
-		setData(prevValue => {
+		setData((prevValue) => {
 			switch (currName) {
 				case "type1":
 					return { ...prevValue, type1: currValue };
@@ -100,24 +106,22 @@ export default function Block2W4(props) {
 		let arr = dataBlock.ignoredFactor;
 
 		if (e.target.checked) {
-            arr.push(e.target.value);
-        }
-        else{
-            arr = arr.filter(item => item !== e.target.value)
-        }
+			arr.push(e.target.value);
+		} else {
+			arr = arr.filter((item) => item !== e.target.value);
+		}
 
-		setData(prevValue => {
-			return {...prevValue, ignoredFactor: arr}
-		})
-    }
+		setData((prevValue) => {
+			return { ...prevValue, ignoredFactor: arr };
+		});
+	};
 
-	function blockSubmit(){
-		props.call(dataBlock)
+	function blockSubmit() {
+		props.call(dataBlock);
 	}
 
 	return (
 		<React.Fragment>
-		
 			<h2 className="tableNumber">Choice 1</h2>
 			<table>
 				<tr>
@@ -149,8 +153,8 @@ export default function Block2W4(props) {
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
 					<td>
-					Directional information within Parking lot for movement towards the Metro platform
-
+						Directional information within Parking lot for movement towards the
+						Metro platform
 					</td>
 				</tr>
 				<tr>
@@ -240,8 +244,11 @@ export default function Block2W4(props) {
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
 					<td>
-					Directional information within Parking lot for movement towards the Metro platform + Display board at the Parking lot entrance gate providing the real-time information about the total and available number of parking spaces 
-</td>
+						Directional information within Parking lot for movement towards the
+						Metro platform + Display board at the Parking lot entrance gate
+						providing the real-time information about the total and available
+						number of parking spaces
+					</td>
 				</tr>
 				<tr>
 					<td>
@@ -252,12 +259,22 @@ export default function Block2W4(props) {
 					<td>
 						<label>Four-Wheeler</label>
 						<br />
-						<input type="radio" name="type2" onChange={handleChange} value="DA" />
+						<input
+							type="radio"
+							name="type2"
+							onChange={handleChange}
+							value="DA"
+						/>
 					</td>
 					<td>
 						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
-						<input type="radio" name="type2" onChange={handleChange} value="PR" />
+						<input
+							type="radio"
+							name="type2"
+							onChange={handleChange}
+							value="PR"
+						/>
 					</td>
 				</tr>
 				<tr>
@@ -269,12 +286,22 @@ export default function Block2W4(props) {
 					<td>
 						<label>Yes</label>
 						<br />
-						<input type="radio" onChange={handleChange} name="badWeather2" value="yes" />
+						<input
+							type="radio"
+							onChange={handleChange}
+							name="badWeather2"
+							value="yes"
+						/>
 					</td>
 					<td>
 						<label>No</label>
 						<br />
-						<input type="radio" onChange={handleChange} name="badWeather2" value="no" />
+						<input
+							type="radio"
+							onChange={handleChange}
+							name="badWeather2"
+							value="no"
+						/>
 					</td>
 				</tr>
 			</table>
@@ -310,8 +337,8 @@ export default function Block2W4(props) {
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
 					<td>
-					Directional information within Parking lot for movement towards the Metro platform
-
+						Directional information within Parking lot for movement towards the
+						Metro platform
 					</td>
 				</tr>
 				<tr>
@@ -401,8 +428,11 @@ export default function Block2W4(props) {
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
 					<td>
-					Directional information within Parking lot for movement towards the Metro platform + Display board at the Parking lot entrance gate providing the real-time information about the total and available number of parking spaces  + Directional information for movements inside the Parking lot to reach the unoccupied parking spaces
-
+						Directional information within Parking lot for movement towards the
+						Metro platform + Display board at the Parking lot entrance gate
+						providing the real-time information about the total and available
+						number of parking spaces + Directional information for movements
+						inside the Parking lot to reach the unoccupied parking spaces
 					</td>
 				</tr>
 				<tr>
@@ -492,8 +522,12 @@ export default function Block2W4(props) {
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
 					<td>
-					Directional information within Parking lot for movement towards the Metro platform + Display board at the Parking lot entrance gate providing the real-time information about the total and available number of parking spaces  + Directional information for movements inside the Parking lot to reach the unoccupied parking spaces
-</td>
+						Directional information within Parking lot for movement towards the
+						Metro platform + Display board at the Parking lot entrance gate
+						providing the real-time information about the total and available
+						number of parking spaces + Directional information for movements
+						inside the Parking lot to reach the unoccupied parking spaces
+					</td>
 				</tr>
 				<tr>
 					<td>
@@ -551,23 +585,71 @@ export default function Block2W4(props) {
 				</tr>
 			</table>
 
-			<label>Which of the following factors did you ignore while stating your choices?</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="TravelTime" onChange={handleSelect}/>
-				<label for="ignoredFactor">Travel Time</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="TravelCost" onChange={handleSelect}/>
-				<label for="ignoredFactor">Travel Cost</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingType" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Type</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingCost" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Cost</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingManagementSystem" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Management System</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="none" onChange={handleSelect}/>
-				<label for="ignoredFactor">None of the Above</label><br />
+			<label>
+				Which of the following factors did you ignore while stating your
+				choices?
+			</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="TravelTime"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Travel Time</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="TravelCost"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Travel Cost</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingType"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Type</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingCost"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Cost</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingManagementSystem"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Management System</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="none"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">None of the Above</label>
+			<br />
 
-				{console.log(dataBlock.ignoredFactor)}
+			{console.log(dataBlock.ignoredFactor)}
 
-			<button className="submitButton" onClick={blockSubmit}>Next</button>
+			<button className="submitButton" onClick={blockSubmit}>
+				Next
+			</button>
 		</React.Fragment>
 	);
 }

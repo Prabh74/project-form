@@ -30,37 +30,43 @@ export default function Block3W4(props) {
 			time: Math.round(
 				((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 					(0.4 * Number(props.tripLength) - 1) +
-					12 + 1.08*Number(props.tripLength)
+					12 +
+					1.08 * Number(props.tripLength)
 			),
-			cost:
-				Math.round(0.4 * Number(props.tripLength) * 7.5 +
-				0.6 * Number(props.tripLength) * 2.3),
+			cost: Math.round(
+				0.4 * Number(props.tripLength) * 7.5 +
+					0.6 * Number(props.tripLength) * 2.3
+			),
 		},
 
 		level2: {
-			time:
-				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
-						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
-						12)
-				 * 1.05),
-			cost:
-				Math.round((0.4 * Number(props.tripLength) * 7.5 +
+			time: Math.round(
+				(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(0.4 * Number(props.tripLength) - 1) +
+					1.08 * Number(props.tripLength) +
+					12) *
+					1.05
+			),
+			cost: Math.round(
+				(0.4 * Number(props.tripLength) * 7.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
-				1.05),
+					1.05
+			),
 		},
 
 		level3: {
-			time:
-				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
-						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
-						12)
-				 * 1.1),
-			cost:
-				Math.round((0.4 * Number(props.tripLength) * 7.5 +
+			time: Math.round(
+				(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(0.4 * Number(props.tripLength) - 1) +
+					1.08 * Number(props.tripLength) +
+					12) *
+					1.1
+			),
+			cost: Math.round(
+				(0.4 * Number(props.tripLength) * 7.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
-				1.1),
+					1.1
+			),
 		},
 	});
 

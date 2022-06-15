@@ -40,7 +40,7 @@ export default function Block4W2(props) {
 		level2: {
 			time:
 				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
 						12)
 				 * 1.05),
@@ -53,7 +53,7 @@ export default function Block4W2(props) {
 		level3: {
 			time:
 				Math.round(
-					Math.round(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
+					(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 						(0.4 * Number(props.tripLength) - 1) + 1.08*Number(props.tripLength) +
 						12)
 				 * 1.1),
