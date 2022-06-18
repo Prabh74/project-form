@@ -5,6 +5,8 @@ import "../app.css"
 export default function Section1(props){
 
     useEffect(() => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         const d = new Date()
         let time = d.toLocaleTimeString();
 

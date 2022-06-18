@@ -1,5 +1,5 @@
 // name
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../app.css";
 
 export default function Section3(props) {
@@ -16,6 +16,11 @@ export default function Section3(props) {
 		cycleOwned: "",
 		endTime: ""
 	});
+
+	useEffect(()=> {
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}, [])
 
 	function section3Submit() {
 		const d2 = new Date()
@@ -288,20 +293,12 @@ export default function Section3(props) {
 				name="monthlyIncome"
 				className="formInputOption"
 				type="radio"
-				value="less-than-15000"
-				id="less-than-15000"
+				value="less-than-30000"
+				id="less-than-30000"
 				onChange={handleChange}
 			/>
-			<label for="less-than-15000">Less than Rs. 15,000</label> <br />
-			<input
-				name="monthlyIncome"
-				className="formInputOption"
-				type="radio"
-				value="15-30"
-				id="15-30"
-				onChange={handleChange}
-			/>
-			<label for="15-30">Rs. 15,000 - Rs. 30,000</label> <br />
+			<label for="less-than-30000">Less than Rs. 30,000</label> <br />
+
 			<input
 				name="monthlyIncome"
 				className="formInputOption"
@@ -341,7 +338,7 @@ export default function Section3(props) {
 			<label className="formLabel">Vehicle Ownership</label>
 			<table>
 				<tr>
-					<td> </td>
+					<td>No. of vehicles</td>
 					<td style={{backgroundColor: "#E5E5E5"}}>0</td>
 					<td style={{backgroundColor: "#E5E5E5"}}>1</td>
 					<td>2</td>

@@ -6,11 +6,15 @@
     font-family: 'Inter', sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 th:nth-child(2) ,td:nth-child(2){
-    background-color: #FF8080;
+    background-color: #A0CED9;
 }
 th:nth-child(3) ,td:nth-child(3){
-    background-color: #C0EDA6;
+    background-color: #53BCD6;
 }
 
 body{

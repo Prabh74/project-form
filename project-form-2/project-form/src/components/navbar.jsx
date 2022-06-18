@@ -1,8 +1,8 @@
 import React from "react";
-import "../app.css"
+import "../app.css";
 
-export default function Navbar(){
-    return(
+export default function Navbar() {
+    return (
         <nav className="navbar">
             <h1 className="navHeading">Survey Form</h1>
             <div style={{display:"flex", alignItems: "center"}}>
@@ -14,5 +14,5 @@ export default function Navbar(){
 				/>
 			</div>
         </nav>
-    )
+    );
 }

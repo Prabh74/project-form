@@ -27,7 +27,7 @@ export default function Block1W2(props) {
 	});
 
 	const [levels, setLevels] = useState({
-		level1: {
+		level3: {
 			time: Math.round(
 				((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 					(0.4 * Number(props.tripLength) - 1) +
@@ -36,6 +36,9 @@ export default function Block1W2(props) {
 			cost:
 				Math.round(0.4 * Number(props.tripLength) * 4.5 +
 				0.6 * Number(props.tripLength) * 2.3),
+			type: "Multi-level Parking",
+			pc: 0,
+			pms: "Basic information regarding the presence of a Parking lot + Presence of VMS + Directional information "
 		},
 
 		level2: {
@@ -49,9 +52,12 @@ export default function Block1W2(props) {
 				Math.round((0.4 * Number(props.tripLength) * 4.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
 				1.05),
+			type:"Underground Parking",
+			pc: 20,
+			pms: "Basic information regarding the presence of a Parking lot + Presence of VMS"
 		},
 
-		level3: {
+		level1: {
 			time:
 				Math.round(
 					(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
@@ -62,6 +68,10 @@ export default function Block1W2(props) {
 				Math.round((0.4 * Number(props.tripLength) * 4.5 +
 					0.6 * Number(props.tripLength) * 2.3) *
 				1.1),
+			type: "Surface Parking",
+			pc: 40,
+			pms: "Basic information regarding the presence of a Parking lot"
+
 		},
 	});
 
@@ -121,36 +131,33 @@ export default function Block1W2(props) {
 			<table>
 				<tr>
 					<th>Attributes</th>
-					<th>Two-Wheeler</th>
-					<th>Two-Wheeler Park-and-Ride</th>
+					<th>Four-Wheeler</th>
+					<th>Four-Wheeler Park-and-Ride</th>
 				</tr>
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level1.time}</td>
+					<td>{levels.level3.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
 					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level1.cost}</td>
+					<td>{levels.level2.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>{20}</td>
+					<td>{levels.level3.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Multi-level Parking</td>
+					<td>{levels.level3.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform
-					</td>
+					<td>{levels.level3.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -159,7 +166,7 @@ export default function Block1W2(props) {
 						you would choose to travel by:
 					</td>
 					<td>
-						<label>Two-Wheeler</label>
+						<label>Four-Wheeler</label>
 						<br />
 						<input
 							type="radio"
@@ -169,7 +176,7 @@ export default function Block1W2(props) {
 						/>
 					</td>
 					<td>
-						<label>Two-Wheeler Park-and-Ride</label>
+						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
 						<input
 							type="radio"
@@ -212,39 +219,33 @@ export default function Block1W2(props) {
 			<table>
 				<tr>
 					<th>Attributes</th>
-					<th>Two-Wheeler</th>
-					<th>Two-Wheeler Park-and-Ride</th>
+					<th>Four-Wheeler</th>
+					<th>Four-Wheeler Park-and-Ride</th>
 				</tr>
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level2.time}</td>
+					<td>{levels.level1.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
 					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level1.cost}</td>
+					<td>{levels.level3.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>0</td>
+					<td>{levels.level2.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Underground</td>
+					<td>{levels.level2.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces + Directional information for movements
-						inside the Parking lot to reach the unoccupied parking spaces
-					</td>
+					<td>{levels.level3.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -253,14 +254,24 @@ export default function Block1W2(props) {
 						you would choose to travel by:
 					</td>
 					<td>
-						<label>Two-Wheeler</label>
+						<label>Four-Wheeler</label>
 						<br />
-						<input type="radio" name="type2" onChange={handleChange} value="DA" />
+						<input
+							type="radio"
+							name="type2"
+							onChange={handleChange}
+							value="DA"
+						/>
 					</td>
 					<td>
-						<label>Two-Wheeler Park-and-Ride</label>
+						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
-						<input type="radio" name="type2" onChange={handleChange} value="PR" />
+						<input
+							type="radio"
+							name="type2"
+							onChange={handleChange}
+							value="PR"
+						/>
 					</td>
 				</tr>
 				<tr>
@@ -272,12 +283,22 @@ export default function Block1W2(props) {
 					<td>
 						<label>Yes</label>
 						<br />
-						<input type="radio" onChange={handleChange} name="badWeather2" value="yes" />
+						<input
+							type="radio"
+							onChange={handleChange}
+							name="badWeather2"
+							value="yes"
+						/>
 					</td>
 					<td>
 						<label>No</label>
 						<br />
-						<input type="radio" onChange={handleChange} name="badWeather2" value="no" />
+						<input
+							type="radio"
+							onChange={handleChange}
+							name="badWeather2"
+							value="no"
+						/>
 					</td>
 				</tr>
 			</table>
@@ -286,13 +307,13 @@ export default function Block1W2(props) {
 			<table>
 				<tr>
 					<th>Attributes</th>
-					<th>Two-Wheeler</th>
-					<th>Two-Wheeler Park-and-Ride</th>
+					<th>Four-Wheeler</th>
+					<th>Four-Wheeler Park-and-Ride</th>
 				</tr>
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level3.time}</td>
+					<td>{levels.level2.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
@@ -302,22 +323,17 @@ export default function Block1W2(props) {
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>20</td>
+					<td>{levels.level1.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Surface Parking</td>
+					<td>{levels.level1.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces{" "}
-					</td>
+					<td>{levels.level2.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -326,7 +342,7 @@ export default function Block1W2(props) {
 						you would choose to travel by:
 					</td>
 					<td>
-						<label>Two-Wheeler</label>
+						<label>Four-Wheeler</label>
 						<br />
 						<input
 							type="radio"
@@ -336,7 +352,7 @@ export default function Block1W2(props) {
 						/>
 					</td>
 					<td>
-						<label>Two-Wheeler Park-and-Ride</label>
+						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
 						<input
 							type="radio"
@@ -379,36 +395,33 @@ export default function Block1W2(props) {
 			<table>
 				<tr>
 					<th>Attributes</th>
-					<th>Two-Wheeler</th>
-					<th>Two-Wheeler Park-and-Ride</th>
+					<th>Four-Wheeler</th>
+					<th>Four-Wheeler Park-and-Ride</th>
 				</tr>
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level1.time}</td>
+					<td>{levels.level2.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
 					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level3.cost}</td>
+					<td>{levels.level1.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>40</td>
+					<td>{levels.level3.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Surface Parking</td>
+					<td>{levels.level1.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform
-					</td>
+					<td>{levels.level1.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -417,7 +430,7 @@ export default function Block1W2(props) {
 						you would choose to travel by:
 					</td>
 					<td>
-						<label>Two-Wheeler</label>
+						<label>Four-Wheeler</label>
 						<br />
 						<input
 							type="radio"
@@ -427,7 +440,7 @@ export default function Block1W2(props) {
 						/>
 					</td>
 					<td>
-						<label>Two-Wheeler Park-and-Ride</label>
+						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
 						<input
 							type="radio"
@@ -470,39 +483,33 @@ export default function Block1W2(props) {
 			<table>
 				<tr>
 					<th>Attributes</th>
-					<th>Two-Wheeler</th>
-					<th>Two-Wheeler Park-and-Ride</th>
+					<th>Four-Wheeler</th>
+					<th>Four-Wheeler Park-and-Ride</th>
 				</tr>
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level2.time}</td>
+					<td>{levels.level1.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
 					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level1.cost}</td>
+					<td>{levels.level3.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>0</td>
+					<td>{levels.level1.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Underground</td>
+					<td>{levels.level3.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces + Directional information for movements
-						inside the Parking lot to reach the unoccupied parking spaces
-					</td>
+					<td>{levels.level1.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -511,7 +518,7 @@ export default function Block1W2(props) {
 						you would choose to travel by:
 					</td>
 					<td>
-						<label>Two-Wheeler</label>
+						<label>Four-Wheeler</label>
 						<br />
 						<input
 							type="radio"
@@ -521,7 +528,7 @@ export default function Block1W2(props) {
 						/>
 					</td>
 					<td>
-						<label>Two-Wheeler Park-and-Ride</label>
+						<label>Four-Wheeler Park-and-Ride</label>
 						<br />
 						<input
 							type="radio"
@@ -560,29 +567,71 @@ export default function Block1W2(props) {
 				</tr>
 			</table>
 
-            {/* <select multiple={true} value={dataBlock.ignoredFactor} onChange={(e)=> {handleSelect(e.target.selectedOptions)}}>
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
-            </select> */}
+			<label>
+				Which of the following factors did you ignore while stating your
+				choices?
+			</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="TravelTime"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Travel Time</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="TravelCost"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Travel Cost</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingType"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Type</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingCost"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Cost</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="ParkingManagementSystem"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">Parking Management System</label>
+			<br />
+			<input
+				type="checkbox"
+				id="ignoredFactor"
+				name="ignoredFactor"
+				value="none"
+				onChange={handleSelect}
+			/>
+			<label for="ignoredFactor">None of the Above</label>
+			<br />
 
+			{console.log(dataBlock.ignoredFactor)}
 
-			<label>Which of the following factors did you ignore while stating your choices?</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="TravelTime" onChange={handleSelect}/>
-				<label for="ignoredFactor">Travel Time</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="TravelCost" onChange={handleSelect}/>
-				<label for="ignoredFactor">Travel Cost</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingType" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Type</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingCost" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Cost</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="ParkingManagementSystem" onChange={handleSelect}/>
-				<label for="ignoredFactor">Parking Management System</label><br />
-				<input type="checkbox" id="ignoredFactor" name="ignoredFactor" value="none" onChange={handleSelect}/>
-				<label for="ignoredFactor">None of the Above</label><br />
-
-			<button className="submitButton" onClick={blockSubmit}>Next</button>
+			<button className="submitButton" onClick={blockSubmit}>
+				Next
+			</button>
 		</React.Fragment>
 	);
 }

@@ -26,7 +26,7 @@ export default function Block2W4(props) {
 	});
 
 	const [levels, setLevels] = useState({
-		level1: {
+		level3: {
 			time: Math.round(
 				((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 					(0.4 * Number(props.tripLength) - 1) +
@@ -37,6 +37,9 @@ export default function Block2W4(props) {
 				0.4 * Number(props.tripLength) * 7.5 +
 					0.6 * Number(props.tripLength) * 2.3
 			),
+			type: "Multi-level Parking",
+			pc: 0,
+			pms: "Basic information regarding the presence of a Parking lot + Presence of VMS + Directional information "
 		},
 
 		level2: {
@@ -52,9 +55,12 @@ export default function Block2W4(props) {
 					0.6 * Number(props.tripLength) * 2.3) *
 					1.05
 			),
+			type: "Underground Parking",
+			pc: 40,
+			pms: "Basic information regarding the presence of a Parking lot + Presence of VMS"
 		},
 
-		level3: {
+		level1: {
 			time: Math.round(
 				(((5 * Number(props.tripLength) - 10) / Number(props.tripLength)) *
 					(0.4 * Number(props.tripLength) - 1) +
@@ -67,8 +73,12 @@ export default function Block2W4(props) {
 					0.6 * Number(props.tripLength) * 2.3) *
 					1.1
 			),
+			type: "Surface Parking",
+			pc: 80,
+			pms: "Basic information regarding the presence of a Parking lot"
 		},
 	});
+
 
 	function handleChange(e) {
 		var currName = e.target.name;
@@ -96,8 +106,6 @@ export default function Block2W4(props) {
 					return { ...prevValue, badWeather4: currValue };
 				case "badWeather5":
 					return { ...prevValue, badWeather5: currValue };
-				// case "ignoredFactor":
-				// 	return { ...prevValue, ignoredFactor: currValue };
 			}
 		});
 	}
@@ -132,30 +140,27 @@ export default function Block2W4(props) {
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level2.time}</td>
+					<td>{levels.level3.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
-					<td>{4.5 * props.tripLength}</td>
+					<td>{7.5 * props.tripLength}</td>
 					<td>{levels.level1.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>0</td>
+					<td>{levels.level3.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Surface Parking</td>
+					<td>{levels.level1.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform
-					</td>
+					<td>{levels.level3.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -223,32 +228,27 @@ export default function Block2W4(props) {
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level3.time}</td>
+					<td>{levels.level2.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
-					<td>{4.5 * props.tripLength}</td>
+					<td>{7.5 * props.tripLength}</td>
 					<td>{levels.level3.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>0</td>
+					<td>{levels.level1.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Multi-level Parking</td>
+					<td>{levels.level2.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces
-					</td>
+					<td>{levels.level3.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -320,26 +320,23 @@ export default function Block2W4(props) {
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
-					<td>{4.5 * props.tripLength}</td>
+					<td>{7.5 * props.tripLength}</td>
 					<td>{levels.level1.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>0</td>
+					<td>{levels.level1.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Surface Parking</td>
+					<td>{levels.level3.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform
-					</td>
+					<td>{levels.level2.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -411,29 +408,23 @@ export default function Block2W4(props) {
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
-					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level2.cost}</td>
+					<td>{7.5 * props.tripLength}</td>
+					<td>{levels.level3.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>80</td>
+					<td>{levels.level3.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Multi-level Parking</td>
+					<td>{levels.level1.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces + Directional information for movements
-						inside the Parking lot to reach the unoccupied parking spaces
-					</td>
+					<td>{levels.level2.pms}</td>
 				</tr>
 				<tr>
 					<td>
@@ -501,33 +492,27 @@ export default function Block2W4(props) {
 				<tr>
 					<td>Travel Time (In mins.)</td>
 					<td>{5 * Number(props.tripLength) - 10}</td>
-					<td>{levels.level3.time}</td>
+					<td>{levels.level1.time}</td>
 				</tr>
 				<tr>
 					<td>Travel Cost (In INR)</td>
-					<td>{4.5 * props.tripLength}</td>
-					<td>{levels.level3.cost}</td>
+					<td>{7.5 * props.tripLength}</td>
+					<td>{levels.level2.cost}</td>
 				</tr>
 				<tr>
 					<td>Parking Cost (In INR)</td>
 					<td>{props.calc.data.parkingCost}</td>
-					<td>40</td>
+					<td>{levels.level2.pc}</td>
 				</tr>
 				<tr>
 					<td>Parking Type</td>
 					<td>{props.calc.data.parkingType}</td>
-					<td>Underground</td>
+					<td>{levels.level2.type}</td>
 				</tr>
 				<tr>
 					<td>Parking Management System</td>
 					<td>{props.calc.data.parkingSystem}</td>
-					<td>
-						Directional information within Parking lot for movement towards the
-						Metro platform + Display board at the Parking lot entrance gate
-						providing the real-time information about the total and available
-						number of parking spaces + Directional information for movements
-						inside the Parking lot to reach the unoccupied parking spaces
-					</td>
+					<td>{levels.level1.pms}</td>
 				</tr>
 				<tr>
 					<td>
